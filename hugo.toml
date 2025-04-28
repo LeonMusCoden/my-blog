@@ -1,0 +1,28 @@
+baseURL = 'https://blog.leonmuscat.de/'
+languageCode = 'en-uk'
+title = "Leon Muscat's Blog"
+theme = "smol"
+
+# Parameters
+[params]
+    # subtitle = "Your blog subtitle goes here!"
+    dateFmt = "02.01.2006"
+
+# Header
+[menu]
+  [[menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/posts/"
+        weight = 1 
+
+  [[menu.main]]
+        identifier = "categories"
+        name = "Categories"
+        url = "/categories/"
+        weight = 2 
+
+  [[menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags"
