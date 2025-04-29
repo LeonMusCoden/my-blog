@@ -13,7 +13,7 @@ I've been hosting my own email with Mailcow for over 2 years now. I want to go o
 
 # Motivation
 
-Before we go the technical bits, let's first discuss the reasons to selfhost email.
+Before we go to the technical bits, let's first discuss the reasons to selfhost email.
 
 ## Why you should not selfhost mail
 
