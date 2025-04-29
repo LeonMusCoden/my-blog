@@ -1,7 +1,7 @@
 ---
 title: 'Mailcow With Dynamic IP'
 date: '2025-04-28'
-draft: true
+draft: false
 categories:
   - default
 tags:
