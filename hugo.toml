@@ -26,3 +26,7 @@ theme = "smol"
         identifier = "tags"
         name = "Tags"
         url = "/tags"
+  [[menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
