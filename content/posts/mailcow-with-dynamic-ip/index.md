@@ -76,7 +76,7 @@ There are 2 options:
 
 Both options make me dependent on third-party providers and I went with the latter. Some will rightfully argue that the former is closer to the spirit of selfhosting, and maybe I'll switch in the future. However, using an SMTP relay service is convenient because it not only handles the dynamic IP problem, but also reputation as a whole. 
 
-I'm using [SendGrid](https://sendgrid.com), which had a free forever tier before it was bought by Twilio. Now it's only free for 60 days. Luckely, all existing free-tier users are not affected by this change. If you're considering using an SMTP relay service, have a look at [SMTP2GO](https://www.smtp2go.com), who offer a free-tier with up to 200 emails/day and 1000 emails / month. I might switch to it in the future when SendGrid kills my free-tier.
+I'm using [SendGrid](https://sendgrid.com), which had a free forever tier for 100 emails/day before it was bought by Twilio. Now it's only free for 60 days. Luckely, all existing free-tier users are not affected by this change. If you're considering using an SMTP relay service, have a look at [SMTP2GO](https://www.smtp2go.com), who offer a free-tier with up to 200 emails/day and 1000 emails / month. I might switch to it in the future when SendGrid kills my free-tier. For me SendGrid has allowed me to circumvent any deliverability issues and it has some nice statistics included in their web interface.
 
 As for how to configure an SMTP relay in Mailcow, there's a great [guide](https://docs.mailcow.email/manual-guides/Postfix/u_e-postfix-relayhost/) in their docs. 
 
@@ -92,3 +92,10 @@ Don't forget to disable the built-in ACME!
 
 I use Authentik as identity provider across all my services. For a long time, Mailcow had its completely cut-off account system. You have the option to use Mailcow as an identity provider, but not the other way around. This changed with an update earlier in 2025. Now, you can set up an external identity provider that Mailcow users can use to authenticate. The steps are detailed [here](https://github.com/mailcow/mailcow-dockerized/issues/5445#issuecomment-1928600434). Unfortunately, I'm getting a generic "login failed" every time. I'll post an update if I figure out what I'm doing wrong.
 
+If you're considering selfhosting email, I recommend taking the time to understand the fundamentals before diving in. Start with a proper backup strategy, expect to spend time on the initial configuration, and be prepared for occasional maintenance. Having said that, once properly set up, Mailcow has been remarkably stable with minimal intervention required.
+
+# Conclusion
+
+Selfhosting email has been an interesting experience and taught me a lot about the protocols involved. For those on dynamic IPs like me, don't let that be a deterrent - there are workable solutions. And if you do go down this path, the Mailcow community is quite helpful when you run into issues.
+
+Is selfhosting email for everyone? Absolutely not. But if you value privacy, want complete control over your data, and don't mind the initial learning curve, it can be a rewarding addition to your selfhosted services.
