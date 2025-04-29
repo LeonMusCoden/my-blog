@@ -44,7 +44,7 @@ There are several identity providers in the self-hosting space. The most popular
 
 ### Authentik
 
-[Authentik](https://goauthentik.io/) sits somewhere in the middle. It offers most of the features you'd want from an enterprise solution while remaining approachable. The UI is modern and user-friendly (once you understand the lingo), and it has LDAP, SSO, pyoxying, and more built-in. It also has a lot of flexibility thanks to the concept of editable flows, which essentially define every process (such as signup or password reset).
+[Authentik](https://goauthentik.io/) sits somewhere in the middle. It offers most of the features you'd want from an enterprise solution while remaining approachable. The UI is modern and user-friendly (once you understand the lingo), and it has LDAP, OIDC, pyoxying, and more built-in. It also has a lot of flexibility thanks to the concept of editable flows, which essentially define every process (such as signup or password reset).
 
 The [docs](https://docs.goauthentik.io/docs) are also very comprehensive and even include articles for how to connect common selfhosted apps to Authentik. 
 
@@ -98,7 +98,7 @@ middlewares-authentik:
       - X-authentik-meta-version
 ```
 
-With that I can secure any application with Authentik. A lot of services support SSO, which in my view is the best option, as it's usually a single button press to login. If that's not the case, as with Jellyfin or Grocy because it breaks stuff, I fallback to LDAP. Finally, some apps don't require accounts because I'm the only that uses them or there's no need to differentiate users, in which case I use the proxy.
+With that I can secure any application with Authentik. A lot of services support OIDC, which in my view is the best option, as it's usually a single button press to login. If that's not the case, as with Jellyfin or Grocy because it breaks stuff, I fallback to LDAP. Finally, some apps don't require accounts because I'm the only that uses them or there's no need to differentiate users, in which case I use the proxy.
 
 I customized some things, like branding and flows for user invitation. The guides by [Cooptonian](https://www.youtube.com/@cooptonian) are fantastic, so I'm not going to go over the same things here. However, I do want to mention my integration with [Ntfy](ntfy.sh), my selfhosted notification service.
 
