@@ -27,5 +27,5 @@ theme = "smol"
         url = "/about"
   [[menu.main]]
         identifier = "summaries"
-        name = "Uni course summaries"
+        name = "Uni Summaries"
         url = "/summaries"
