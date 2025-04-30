@@ -1,4 +1,3 @@
-baseURL = 'https://blog.leonmuscat.de/'
 languageCode = 'en-uk'
 title = "Leon Muscat's Blog"
 theme = "smol"
