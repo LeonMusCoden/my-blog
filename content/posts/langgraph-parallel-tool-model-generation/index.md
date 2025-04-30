@@ -21,10 +21,10 @@ My chatbot needed to generate charts as part of its reponses. I wanted to have b
 
 My initial implementation had a straightforward but slow flow:
 
-1. LLM in `model` node makes a toolcall to generate a chart
-2. Conditional edge directs to `chart` node
-3. `chart` node runs the chart generation and inserts a ToolMessage with the result
-4. Execution returns to `model` node and LLM is invoked again
+1. LLM in *model* node makes a toolcall to generate a chart
+2. Conditional edge directs to *chart* node
+3. *chart* node runs the chart generation and inserts a ToolMessage with the result
+4. Execution returns to *model* node and LLM is invoked again
 
 The problem with this approach is that users had to wait for the chart to fully generate *before* the LLM could continue generating text. Ideally, chart generation and text generation should happen in parallel, reducing the total response time.
 
@@ -34,11 +34,11 @@ I wanted to keep using toolcalls since they're the safest way to have an LLM int
 
 ## The Architecture
 
-1. When the LLM makes a chart toolcall, the `chart` node creates an placeholder ToolMessage
+1. When the LLM makes a chart toolcall, the *chart* node creates an placeholder ToolMessage
 2. The graph then branches execution to both:
-   - Return to the `model` node so the LLM can continue generating text
-   - Send to a new `update_chart` node that handles the actual chart generation
-3. The `update_chart` node replaces the placeholder with the final chart result when ready
+   - Return to the *model* node so the LLM can continue generating text
+   - Send to a new *update_chart* node that handles the actual chart generation
+3. The *update_chart* node replaces the placeholder with the final chart result when ready
 
 The result: The LLM generates text while the chart is being created in the background.
 
@@ -77,7 +77,7 @@ async def chart(self, state: State) -> State:
     return {"messages": new_messages}
 ```
 
-The `chart` node doesn't actually generate the chart - it just creates a placeholder message with all the data required for generating the chart. The actual chart generation happens in the `update_chart` node:
+The *chart* node doesn't actually generate the chart - it just creates a placeholder message with all the data required for generating the chart. The actual chart generation happens in the *update_chart* node:
 
 ```py
 async def update_chart(self, state: State):
@@ -136,11 +136,11 @@ def _should_prompt_model_again(self, state: State):
 With this conditional routing, a failing chart generation follows this improved flow:
 
 1. LLM makes a toolcall to generate a chart
-2. `chart` node inserts a placeholder message
+2. *chart* node inserts a placeholder message
 3. Execution branches to:
-   - `model` node where the LLM continues generating text assuming the chart will be available
-   - `update_chart` node which attempts to generate the chart but fails and inserts error handling instructions
-4. Conditional edge redirects to `model` node
+   - *model* node where the LLM continues generating text assuming the chart will be available
+   - *update_chart* node which attempts to generate the chart but fails and inserts error handling instructions
+4. Conditional edge redirects to *model* node
 5. LLM apologizes and responds using text instead of a chart
 
 # Conclusion
