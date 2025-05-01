@@ -9,8 +9,6 @@ tags:
   - LangGraph
 ---
 
-# Parallel Tool Execution in LangGraph
-
 Recently, I was working with [LangGraph](https://langchain-ai.github.io/langgraph/) to build a chatbot, and encountered a limitation: **You cannot invoke an LLM before completing all open toolcalls**.
 
 I found a way to work around that, and I'm sharing my solution since I couldn't find anything online addressing this issue.
